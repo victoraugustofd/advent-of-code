@@ -21,9 +21,9 @@ body:
     attributes:
       label: Challenge input
       description: Paste the challenge input from Advent of Code here.
-      placeholder: |
+      value: |
         ```
-        Challenge input here.
+        Challenge input here (keep the three backticks (`)).
         ```
     validations:
       required: true
