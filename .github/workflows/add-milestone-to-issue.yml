@@ -10,8 +10,15 @@ jobs:
   add-milestone-to-issue:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Parsing issue
+        id: issue-parser
+        uses: stefanbuck/github-issue-parser@v3
+        with:
+          template-path: .github/ISSUE_TEMPLATE/challenge.yml
       - name: Adding milestone to issue
         uses: Julexar/Milestone-Assigner@v1.0
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
-          milestone: "${{ github.event.issue.challenge-year }} Challenges"
+          milestone: "${{ steps.issue-parser.outputs.issueparser_challenge-year }} Challenges"
