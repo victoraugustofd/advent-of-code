@@ -20,5 +20,5 @@ jobs:
       - name: Adding milestone to issue
         uses: Julexar/Milestone-Assigner@v1.0
         with:
-          token: "${{ secrets.GITHUB_TOKEN }}"
+          token: "${{ secrets.ACTION_TOKEN }}"
           milestone: "${{ steps.issue-parser.outputs.issueparser_challenge-year }} Challenges"
