@@ -1,0 +1,38 @@
+name: 🧩 Challenge
+title: [Day x]: 
+description: Use this template to create an issue that represent a new Advent of Code day challenge.
+body:
+  - type: textarea
+    id: challenge-description
+    attributes:
+      label: Challenge description
+      description: Paste the challenge description from Advent of Code here.
+      placeholder: Challenge description here.
+    validations:
+      required: true
+  - type: textarea
+    id: challenge-input
+    attributes:
+      label: Challenge input
+      description: Paste the challenge input from Advent of Code here.
+      placeholder: Challenge input here.
+    validations:
+      required: true
+  - type: dropdown
+    id: challenge-year
+    attributes:
+      label: Challenge year
+      description: Select the year from which this challenge is from.
+      options:
+        - 2024
+        - 2023
+        - 2022
+        - 2021
+        - 2020
+        - 2019
+        - 2018
+        - 2017
+        - 2016
+        - 2015
+    validations:
+      required: true
