@@ -1,6 +1,7 @@
 name: 🧩 Challenge
 title: "[Day x]: "
 description: Use this template to create an issue that represent a new Advent of Code day challenge.
+projects: ["victoraugustofd/6"]
 body:
   - type: textarea
     id: challenge-description
