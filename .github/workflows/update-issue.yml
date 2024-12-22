@@ -28,7 +28,7 @@ jobs:
           string="${{ github.event.issue.title }}"
           if [[ $string =~ Day\ ([0-9]+) ]]; then
             day=${BASH_REMATCH[1]}
-            echo "{day}={$day}" >> $GITHUB_OUTPUT
+            echo "day=${day}" >> $GITHUB_OUTPUT
           else
             echo "::error::Title does not match the expected pattern"
           fi
