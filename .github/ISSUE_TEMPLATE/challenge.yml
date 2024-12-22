@@ -21,7 +21,10 @@ body:
     attributes:
       label: Challenge input
       description: Paste the challenge input from Advent of Code here.
-      placeholder: Challenge input here.
+      placeholder: |
+        ```
+        Challenge input here.
+        ```
     validations:
       required: true
   - type: dropdown
