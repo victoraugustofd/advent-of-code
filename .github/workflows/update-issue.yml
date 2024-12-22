@@ -28,13 +28,14 @@ jobs:
           string="${{ github.event.issue.title }}"
           if [[ $string =~ Day\ ([0-9]+) ]]; then
             day=${BASH_REMATCH[1]}
-            echo "::set-output name=day::$day"
+            echo "{day}={$day}" >> $GITHUB_OUTPUT
           else
             echo "::error::Title does not match the expected pattern"
           fi
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v4
         with:
+          token: "${{ secrets.ACTION_TOKEN }}"
           issue-number: ${{ github.event.issue.number }}
           body: |
             ### Challenge link
