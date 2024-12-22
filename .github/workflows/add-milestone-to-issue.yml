@@ -1,0 +1,16 @@
+name: Add milestone to issue
+
+on:
+  issues:
+    types: 
+      - opened
+
+jobs:
+  add-milestone-to-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Adding milestone to issue
+        uses: andrefcdias/add-to-milestone@v1.3.0
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          milestone: "${{ github.event.issue.challenge-year }} Challenges"
