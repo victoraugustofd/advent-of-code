@@ -1,0 +1,41 @@
+name: Update issue
+
+on:
+  issues:
+    types: 
+      - opened
+      - reopened
+
+jobs:
+  update-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Parsing issue
+        id: issue-parser
+        uses: stefanbuck/github-issue-parser@v3
+        with:
+          template-path: .github/ISSUE_TEMPLATE/challenge.yml
+      - name: Adding milestone to issue
+        uses: Julexar/Milestone-Assigner@v1.0
+        with:
+          token: "${{ secrets.ACTION_TOKEN }}"
+          milestone: "${{ steps.issue-parser.outputs.issueparser_challenge-year }} Challenges"
+      - name: Run bash script to extract day from issue title
+        id: extract
+        run: |
+          string="${{ github.event.title }}"
+          if [[ $string =~ Day\ ([0-9]+) ]]; then
+            day=${BASH_REMATCH[1]}
+            echo "::set-output name=day::$day"
+          else
+            echo "::error::Title does not match the expected pattern"
+          fi
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.number }}
+          body: |
+            ### Challenge link
+            https://adventofcode.com/${{ steps.issue-parser.outputs.issueparser_challenge-year }}/day/${{ steps.extract.outputs.day }}
