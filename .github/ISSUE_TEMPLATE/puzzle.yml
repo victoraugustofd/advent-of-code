@@ -1,0 +1,47 @@
+name: 🧩 Puzzle
+title: "[yyyy] [Day x]: "
+description: Use this template to create an issue that represent a new Advent of Code day puzzle.
+labels:
+  - puzzle
+assignees:
+  - victoraugustofd
+projects:
+  - victoraugustofd/6
+body:
+  - type: textarea
+    id: puzzle-description
+    attributes:
+      label: Puzzle description
+      description: Paste the puzzle description from Advent of Code here.
+      placeholder: puzzle description here.
+    validations:
+      required: true
+  - type: textarea
+    id: puzzle-input
+    attributes:
+      label: Puzzle input
+      description: Paste the puzzle input from Advent of Code here.
+      value: |
+        ```
+        Puzzle input here (keep the three backticks (`)).
+        ```
+    validations:
+      required: true
+  - type: dropdown
+    id: puzzle-year
+    attributes:
+      label: Puzzle year
+      description: Select the year from which this puzzle is from.
+      options:
+        - 2024
+        - 2023
+        - 2022
+        - 2021
+        - 2020
+        - 2019
+        - 2018
+        - 2017
+        - 2016
+        - 2015
+    validations:
+      required: true
