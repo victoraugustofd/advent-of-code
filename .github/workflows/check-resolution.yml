@@ -1,0 +1,56 @@
+name: Submit answer and check puzzle resolution
+
+on:
+  pull_request:
+    paths:
+      - 'puzzles/**/*.py'
+    types:
+      - opened
+
+jobs:
+  get-answer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Extract year and day from branch name
+        id: extract
+        run: |
+          branch_name=$(echo "${{ github.event.pull_request.head.ref }}")
+
+          if [[ $branch_name =~ puzzle/([0-9]{4})-day-([1-9]|1[0-9]|2[0-5]) ]]; then
+            year="${BASH_REMATCH[1]}"
+            day="${BASH_REMATCH[2]}"
+
+            echo "year=${year}" >> $GITHUB_OUTPUT
+            echo "day=${day}" >> $GITHUB_OUTPUT
+          else
+            echo "Branch name does not follow the expected pattern."
+            exit 1
+      - name: Get answer
+        id: get_answer
+        run: |
+          year="${{ steps.extract.outputs.year }}"
+          day="${{ steps.extract.outputs.day }}"
+
+          script_path="puzzles/$year/day $day/resolution.py"
+
+          if [ -f "$script_path" ]; then
+            echo "Running script: $script_path"
+            answer=$(python $script_path)
+            echo "Answer: $answer"
+            echo "answer=${answer}" >> $GITHUB_OUTPUT
+          else
+            echo "Script not found: $script_path"
+            exit 1
+      - name: Submit answer
+        id: submit_answer
+        run: |
+          echo "Result: ${{ steps.get_answer.outputs.answer }}"
+          exit 1
