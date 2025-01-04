@@ -3,7 +3,7 @@ name: Auto open pull request on puzzle branches
 on:
   push:
     branches:
-      - 'puzzle/*-day-*'
+      - 'puzzle/**'
 
 jobs:
   open-pull-request:
