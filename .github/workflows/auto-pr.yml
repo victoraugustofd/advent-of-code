@@ -3,18 +3,7 @@ name: Auto open pull request on puzzle branches
 on:
   push:
     branches:
-      - 'puzzle/201[5-9]-day-1[0-9]'
-      - 'puzzle/201[5-9]-day-2[0-5]'
-      - 'puzzle/201[5-9]-day-[1-9]'
-      - 'puzzle/20[2-9][0-9]-day-1[0-9]'
-      - 'puzzle/20[2-9][0-9]-day-2[0-5]'
-      - 'puzzle/20[2-9][0-9]-day-[1-9]'
-      - 'puzzle/2[1-9][0-9][0-9]-day-1[0-9]'
-      - 'puzzle/2[1-9][0-9][0-9]-day-2[0-5]'
-      - 'puzzle/2[1-9][0-9][0-9]-day-[1-9]'
-      - 'puzzle/[3-9][0-9][0-9][0-9]-day-1[0-9]'
-      - 'puzzle/[3-9][0-9][0-9][0-9]-day-2[0-5]'
-      - 'puzzle/[3-9][0-9][0-9][0-9]-day-[1-9]'
+      - 'puzzle/*-day-*'
 
 jobs:
   open-pull-request:
