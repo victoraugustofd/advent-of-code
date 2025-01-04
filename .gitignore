@@ -1,0 +1,15 @@
+# ignore everything
+*
+
+# accept directories
+!*/
+
+# accept files in folders
+!.github/ISSUE_TEMPLATE/*.yml
+!.github/workflows/*.yml
+!puzzles/**/*.py
+!puzzles/**/.keep
+
+# accept files in root
+!/.gitignore
+!README*.md

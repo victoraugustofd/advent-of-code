@@ -16,12 +16,12 @@ jobs:
         id: issue-parser
         uses: stefanbuck/github-issue-parser@v3
         with:
-          template-path: .github/ISSUE_TEMPLATE/challenge.yml
+          template-path: .github/ISSUE_TEMPLATE/puzzle.yml
       - name: Adding milestone to issue
         uses: Julexar/Milestone-Assigner@v1.0
         with:
           token: "${{ secrets.ACTION_TOKEN }}"
-          milestone: "${{ steps.issue-parser.outputs.issueparser_challenge-year }} Challenges"
+          milestone: "${{ steps.issue-parser.outputs.issueparser_puzzle-year }} Puzzles"
       - name: Run bash script to extract day from issue title
         id: extract
         run: |
@@ -39,5 +39,5 @@ jobs:
           token: "${{ secrets.ACTION_TOKEN }}"
           issue-number: ${{ github.event.issue.number }}
           body: |
-            ### Challenge link
-            https://adventofcode.com/${{ steps.issue-parser.outputs.issueparser_challenge-year }}/day/${{ steps.extract.outputs.day }}
+            ### Puzzle link
+            https://adventofcode.com/${{ steps.issue-parser.outputs.issueparser_puzzle-year }}/day/${{ steps.extract.outputs.day }}
