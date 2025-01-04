@@ -33,6 +33,7 @@ jobs:
           else
             echo "Branch name does not follow the expected pattern."
             exit 1
+
       - name: Get answer
         id: get_answer
         run: |
@@ -49,6 +50,7 @@ jobs:
           else
             echo "Script not found: $script_path"
             exit 1
+
       - name: Submit answer
         id: submit_answer
         run: |
