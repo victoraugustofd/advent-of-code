@@ -1,20 +1,9 @@
-name: Auto open pull request on challenge branches
+name: Auto open pull request on puzzle branches
 
 on:
   push:
     branches:
-      - 'challenge/201[5-9]-day-1[0-9]'
-      - 'challenge/201[5-9]-day-2[0-5]'
-      - 'challenge/201[5-9]-day-[1-9]'
-      - 'challenge/20[2-9][0-9]-day-1[0-9]'
-      - 'challenge/20[2-9][0-9]-day-2[0-5]'
-      - 'challenge/20[2-9][0-9]-day-[1-9]'
-      - 'challenge/2[1-9][0-9][0-9]-day-1[0-9]'
-      - 'challenge/2[1-9][0-9][0-9]-day-2[0-5]'
-      - 'challenge/2[1-9][0-9][0-9]-day-[1-9]'
-      - 'challenge/[3-9][0-9][0-9][0-9]-day-1[0-9]'
-      - 'challenge/[3-9][0-9][0-9][0-9]-day-2[0-5]'
-      - 'challenge/[3-9][0-9][0-9][0-9]-day-[1-9]'
+      - 'puzzle/**'
 
 jobs:
   open-pull-request:
@@ -23,7 +12,7 @@ jobs:
       - name: get issue number
         id: get_issue_number
         run: |
-          if [[ ${{ github.ref_name }} =~ challenge/([0-9]{4})-day-([1-9]|1[0-9]|2[0-5]) ]]; then
+          if [[ ${{ github.ref_name }} =~ puzzle/([0-9]{4})-day-([1-9]|1[0-9]|2[0-5]) ]]; then
             year=${BASH_REMATCH[1]}
             day=${BASH_REMATCH[2]}
 
