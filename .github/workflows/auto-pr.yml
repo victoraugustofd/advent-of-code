@@ -19,8 +19,8 @@ jobs:
             year=${BASH_REMATCH[1]}
             day=${BASH_REMATCH[2]}
 
-            issue_number=$(gh issue list -S '[$year] [Day $day] in:title' --json number | jq '.[].number')
-            echo $issue_number
+            issue_number=$(gh issue list -S "[$year] [Day $day] in:title" --json number | jq '.[].number')
+
             if [ -z "$issue_number" ]; then
               echo "::error::Issue not found!"
               exit 1
