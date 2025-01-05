@@ -9,10 +9,10 @@ jobs:
   open-pull-request:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: get issue number
+      - name: Get issue number
         id: get_issue_number
         run: |
           if [[ ${{ github.ref_name }} =~ puzzle/([0-9]{4})-day-([1-9]|1[0-9]|2[0-5]) ]]; then
@@ -33,7 +33,7 @@ jobs:
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
-      - name: create pull request
+      - name: Create pull request
         run: |
           gh pr create -B main -H ${{ github.ref_name }} -t "Pull request to resolve #${{ steps.get_issue_number.outputs.issue_number }}" -b ""
         env:
