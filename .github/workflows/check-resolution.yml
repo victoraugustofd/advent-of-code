@@ -41,7 +41,7 @@ jobs:
           year="${{ steps.extract.outputs.year }}"
           day="${{ steps.extract.outputs.day }}"
 
-          script_path="puzzles/$year/day $day/resolution.py"
+          script_path="puzzles/$year/day-$day/resolution.py"
 
           if [ -f "$script_path" ]; then
             echo "Running script: $script_path"
