@@ -34,6 +34,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
       - name: create pull request
-        run: gh pr create -B main -H ${{ github.ref_name }} --title 'Pull request to resolve #${{ steps.get_issue_number.outputs.issue_number }}'
+        run: gh pr create -B main -H ${{ github.ref_name }} --title "Pull request to resolve #${{ steps.get_issue_number.outputs.issue_number }}""
         env:
           GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
