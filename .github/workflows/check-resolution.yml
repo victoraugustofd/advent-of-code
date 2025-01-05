@@ -33,6 +33,7 @@ jobs:
           else
             echo "Branch name does not follow the expected pattern."
             exit 1
+          fi
 
       - name: Get answer
         id: get_answer
@@ -40,16 +41,17 @@ jobs:
           year="${{ steps.extract.outputs.year }}"
           day="${{ steps.extract.outputs.day }}"
 
-          script_path="puzzles/$year/day $day/resolution.py"
+          script_path="puzzles/$year/day-$day/resolution.py"
 
           if [ -f "$script_path" ]; then
             echo "Running script: $script_path"
-            answer=$(python $script_path)
+            answer=$(python "$script_path")
             echo "Answer: $answer"
             echo "answer=${answer}" >> $GITHUB_OUTPUT
           else
             echo "Script not found: $script_path"
             exit 1
+          fi
 
       - name: Submit answer
         id: submit_answer
