@@ -9,6 +9,9 @@ jobs:
   open-pull-request:
     runs-on: ubuntu-latest
     steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
       - name: get issue number
         id: get_issue_number
         run: |
