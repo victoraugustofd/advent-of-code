@@ -45,7 +45,7 @@ jobs:
 
           if [ -f "$script_path" ]; then
             echo "Running script: $script_path"
-            answer=$(python $script_path)
+            answer=$(python "$script_path")
             echo "Answer: $answer"
             echo "answer=${answer}" >> $GITHUB_OUTPUT
           else
