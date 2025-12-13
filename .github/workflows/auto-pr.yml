@@ -35,7 +35,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
       - name: create pull request
         run: gh pr create \
-          -B ${{ GITHUB_DEFAULT_BRANCH }} \
+          -B ${{ github.event.repository.default_branch }} \
           -H ${{ github.ref_name }} \
           --title 'Pull request to resolve Puzzle ${{ steps.get_issue.outputs.issue_title }}' \
           --body 'Resolves #${{ steps.get_issue.outputs.issue_number }}
